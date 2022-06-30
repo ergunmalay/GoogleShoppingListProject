@@ -23,7 +23,7 @@
         <label for="password">Password:</label>
         <input type="password" name="password" placeholder="Password" id="password" required>
         <input id="submit" type="submit" value="Login">
-        <label id="logLabel">Don't have an account? <a id="registerBtn" href="/HTML/register.html">Register</a></label>
+        <label id="logLabel">Don't have an account? <a id="registerBtn" href="/HTML/register.php">Register</a></label>
     </form>
 </body>
 </html>
@@ -49,7 +49,9 @@
                     }
                 }
             } else {
-                echo "Username or password is incorrect";
+                //create a css pop-up message saying that the username or password is incorrect
+                echo "<script>alert('Username or password is incorrect');</script>";
+                
             }
         }
     }

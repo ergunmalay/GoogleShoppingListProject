@@ -91,7 +91,7 @@
       $json = json_decode($itemDatabase, true);
 
       //create a form to edit the item in the database
-      echo "<form id=editForm action='edit.php' method='post'>";
+      echo "<form id=editForm action='todo.php' method='post'>";
       echo "<input type='text' name='item' value='$json[$id]'>";
       echo "<input type='hidden' name='id' value='$id'>";
       echo "<input type='submit' name='submit' value='Submit'>";
@@ -99,15 +99,22 @@
     }
 
     if(isset($_POST['submit'])){
-      $id = $_GET['id'];
-      //replace value in index $id with the value in the form
-      $json[$id] = $_POST['item'];
-      //encode json array
+      //gets the id of the item to edit
+      $id = $_POST['id'];
+
+      //gets json array from database and assign to variable
+      $json = json_decode($itemDatabase, true);
+
+      //gets the item from the form
+      $item = $_POST['item'];
+      //updates the item in the array
+      $json[$id] = $item;
+      //encodes json array
       $json = json_encode($json);
-      //updates the item in the database
+      //updates the item in the database  
       $query = "UPDATE registration  SET item = '$json' WHERE username = '$username'";
       $result = mysqli_query($db, $query);
-      //goes specic to list page
+      //go to url
       header("Location: todo.php");
     }
 ?>

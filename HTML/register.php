@@ -25,7 +25,7 @@
         <label for="Email">Email:</label>
         <input type="email" name="email" id="email" required>
         <input id="submit" type="submit" value="Register">
-        <label id="regLabel">Already have an account? <a id="loginBtn" href="/HTML/login.html">Login</a></label>
+        <label id="regLabel">Already have an account? <a id="loginBtn" href="/HTML/index.php">Login</a></label>
     </form>
 
     
@@ -52,7 +52,7 @@
             $stmt->execute();
             $stmt->close();
             //go to login page
-            header("Location: /HTML/login.php");
+            header("Location: /HTML/index.php");
             $conn->close();
         }
     }
