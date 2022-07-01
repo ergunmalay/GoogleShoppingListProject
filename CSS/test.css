@@ -231,7 +231,67 @@ body {
 #editForm * {
   margin: 7px;
   padding: 7px;
-  font-size: 1.1rem;
   border-radius: 10px;
   transition: all 0.3s ease;
 }
+
+#editForm input[type="text"] {
+  width: 100%;
+  text-align: center;
+
+}
+
+#editForm input[type=submit] {
+  outline: none;
+  background-color: #6495ed;
+  color: white;
+  border: 5px solid transparent;
+  cursor: pointer;
+  width: 100px;
+
+  display: block;
+  margin: auto;
+}
+
+#editForm input[type=submit]:hover {
+  background-color: #3c723c;
+}
+
+
+
+/* MODAL WRAPPER */
+.modal {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(77, 77, 77, 0.7);
+  transition: all 0.4s;
+}
+
+.modalcontent {
+  position: relative;
+  background: #fff;
+  width: 500px;
+  max-width: 90%;
+  padding: 1em 5em; 
+  border-radius: 50px;
+}
+
+.modalcontent a {
+  font-size: 31px;
+}
+
+.modalclose {
+  position: absolute;
+  top: 0;
+  right: 15px;
+  color: #585858;
+  text-decoration: none;
+  font-size: 36px;
+}
+

@@ -2,7 +2,6 @@
     session_start();
     if(isset($_SESSION['username'])){
         $username = $_SESSION['username'];
-        echo "<a> Welcome $username </a> ";
     } else {
         header("Location: /HTML/index.php");
     }
@@ -91,11 +90,15 @@
       $json = json_decode($itemDatabase, true);
 
       //create a form to edit the item in the database
-      echo "<form id=editForm action='todo.php' method='post'>";
-      echo "<input type='text' name='item' value='$json[$id]'>";
+      //place the form within a div
+      echo "<div class='modal'>";
+      echo "<form class='modalcontent' id=editForm action='todo.php' method='post'>";
+      echo "<input autocomplete='off' type='text' name='item' value='$json[$id]' required>";
       echo "<input type='hidden' name='id' value='$id'>";
       echo "<input type='submit' name='submit' value='Submit'>";
+      echo "<a href='todo.php' class='modalclose'>&times;</a>";
       echo "</form>";
+      echo "</div>";
     }
 
     if(isset($_POST['submit'])){
@@ -169,7 +172,7 @@
                 echo "<h2>$item</h2>";
                 echo "<button class='btnDelete' id='$i' name='delete'>Delete</button>";
                 echo "<input type='hidden' name='id' value='$i' />";
-                echo "<button class='btnEdit' id='$i' name='edit'>Edit</button>";
+                echo "<button href='modalbox' class='btnEdit' id='$i' name='edit'>Edit</button>";
                 echo "</form>";
                 $i = $i + 1; //increments the counter
 
