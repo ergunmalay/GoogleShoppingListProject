@@ -49,7 +49,7 @@
                     }
                 }
             } else {
-                //create a css pop-up message saying that the username or password is incorrect
+                //alert for incorrect username or password
                 echo "<script>alert('Username or password is incorrect');</script>";
                 
             }

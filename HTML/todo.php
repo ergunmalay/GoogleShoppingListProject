@@ -9,7 +9,7 @@
     //connect to the database
     $db = mysqli_connect("localhost", "root", "", "test");
 
-
+    
     if(mysqli_connect_errno()){
         echo "Failed to connect to MySQL: " . mysqli_connect_error(); //Shows an error message if the connection failes
     } else {
@@ -27,29 +27,26 @@
             //gets json array from database and assign to variable
             $json = json_decode($itemDatabase, true);
             //adds item to json array
-            $json[] = $item; //add item to array
-            //encodes json array
+            $json[] = $item;
             $json = json_encode($json); //encode array to json
             //updates the item in the database
             $query = "UPDATE registration  SET item = '$json' WHERE username = '$username'";
             $result = mysqli_query($db, $query);
 
-            //goes specic to list page
+            //goes to page
             header("Location: todo.php");
 
         }
       }
 
-    //checks if the clear button is clicked
+    //clear button
     if(isset($_POST['clear'])){
-        //sets the item to null
         $item = null;
-        //updates the item in the database
         $query = "UPDATE registration  SET item = '$item' WHERE username = '$username'";
         $result = mysqli_query($db, $query);
     }
 
-    //checks if the delete button is clicked
+    //delete button
     if(isset($_POST['delete'])){
       //gets the id of the item to delete
       $id = $_POST['id'];
@@ -76,7 +73,7 @@
       header("Location: todo.php");
     }
 
-    //if the edit button is clicked then go to edit page and pass the id of the item to edit and the item to edit
+    //edit button
     if(isset($_POST['edit'])){
       //gets the id of the item to edit
       $id = $_POST['id'];
@@ -89,8 +86,7 @@
       //gets json array from database and assign to variable
       $json = json_decode($itemDatabase, true);
 
-      //create a form to edit the item in the database
-      //place the form within a div
+
       echo "<div class='modal'>";
       echo "<form class='modalcontent' id=editForm action='todo.php' method='post'>";
       echo "<input autocomplete='off' type='text' name='item' value='$json[$id]' required>";
@@ -108,11 +104,9 @@
       //gets json array from database and assign to variable
       $json = json_decode($itemDatabase, true);
 
-      //gets the item from the form
       $item = $_POST['item'];
       //updates the item in the array
       $json[$id] = $item;
-      //encodes json array
       $json = json_encode($json);
       //updates the item in the database  
       $query = "UPDATE registration  SET item = '$json' WHERE username = '$username'";
@@ -134,7 +128,7 @@
   <body>
 
     <div class="topnav">
-      <a class="active" href="/HTML/list.php">Home</a>
+      <a class="active">Home</a>
       <?php echo "<a> Welcome $username </a> " ?>
       <a href="/PHP/logout.php">Logout</a>
     </div>
